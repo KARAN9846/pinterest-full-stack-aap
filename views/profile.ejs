@@ -17,21 +17,40 @@
                 <img
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
             </div>
-            <h2 class="name">username</h2>
-            <h3 class="username">@username</h3>
-            <p class="tagline">some tagline</p>
-            <p class="description">some discription</p>
-            <a href="#" class="button">Account Settings</a>
+            <h2 class="name">
+                <%= user.fullname %>
+            </h2>
+            <h3 class="username">@<%= user.username %>
+            </h3>
+            <p class="tagline">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio
+                doloribus sint ex quo doloremque sed error amet natus eligendi.</p>
+            <a href="/logout" class="button">logout</a>
+
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="text" name="filecaption" placeholder="some caption">
+                <input type="file" name="file">
+                <input type="submit">
+            </form>
+            
+
         </div>
     </div>
 
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1518992028580-6d57bd80f2dd?q=80&w=1915&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">All Designes</h5>
-            </div>
+        <div class="cards flex">
+            <% user.posts.forEach(function(post){ %>
+                <div class="card" style="width: 18rem;">
+                    <img src="/images/uploads/<%= post.image %>"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= post.imageText %></h5>
+                    </div>
+                </div>
+
+            <% }) %>
         </div>
+        
     </div>
 </body>
 

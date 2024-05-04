@@ -3,11 +3,15 @@ const Schema = mongoose.Schema;
 
 // Define the post schema
 const postSchema = new Schema({
-  postText: {
+  imageText: {
     type: String,
     required: true
   },
   user: {
+    image:{
+      type:String,
+
+    },
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
